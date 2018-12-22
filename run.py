@@ -1,6 +1,6 @@
 import flask
 from Entities.config import config
-from DAL.DatabaseConfig import DatabaseConfig
+from DAL.DBTestConnection import DBTestConnection
 print("Trying to run python project: "+config.projectTitle)
 print("Project is running...")
 
@@ -8,8 +8,9 @@ app = flask.Flask(__name__)
 app.config["DEBUG"] = True
 
 
-@app.route('/', methods=['GET'])
+@app.route('/users', methods=['GET'])
 def home():
-    return "Jacco stinkt"
+    result = DBTestConnection.connectAsTest() 
+    return flask.Response(result,mimetype='application/json')
 
 app.run()

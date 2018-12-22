@@ -20,5 +20,6 @@ class DatabaseConfig:
             host=self.dbServer,
             user=self.dbUserName,
             passwd=self.dbPassword,
+            database = self.dbName,
             port=self.dbPort
         )
